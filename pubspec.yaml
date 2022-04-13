@@ -59,8 +59,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/user_icon.svg
-    - assets/password_icon.svg
+    - images/user_icon.svg
+    - images/password_icon.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
