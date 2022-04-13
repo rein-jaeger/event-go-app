@@ -2,6 +2,7 @@ import 'package:event_go_app/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  Paint.enableDithering = true;
   runApp(const EventGoApp());
 }
 
