@@ -42,16 +42,22 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget createButton(double width) {
+  Widget createElevatedButton(String label, double width) {
     return SizedBox(
         width: width,
         height: 60,
         child: ElevatedButton(
           onPressed: () {},
-          child: const Text('Login',
-              style: TextStyle(color: Colors.blue, fontSize: 18)),
+          child: Text(label, style: const TextStyle(fontSize: 18)),
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.white),
+              backgroundColor: MaterialStateProperty.resolveWith((states) {
+                if (states.contains(MaterialState.pressed)) {
+                  return Colors.white70;
+                }
+
+                return Colors.white;
+              }),
+              foregroundColor: MaterialStateProperty.all(Colors.blue),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)))),
         ));
@@ -75,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
     return Center(
         child: SizedBox(
             width: screenSize.width,
-            height: screenSize.height * 0.8,
+            height: screenSize.height,
             child: Padding(
                 padding: const EdgeInsets.all(40),
                 child: Column(
@@ -123,8 +129,8 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         )),
                     Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 40, 0, 8),
-                        child: createButton(formWidth))
+                        padding: const EdgeInsets.fromLTRB(0, 80, 0, 8),
+                        child: createElevatedButton('Next', formWidth))
                   ],
                 ))));
   }
