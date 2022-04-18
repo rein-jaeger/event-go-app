@@ -18,7 +18,7 @@ class AdaptiveFormWidget extends StatelessWidget {
 
   Size _getPortraitSize(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var width = max(minSize.width, size.width * 0.8);
+    var width = max(minSize.width, size.width * 0.9);
 
     return Size(width, max(minSize.height, width / size.aspectRatio));
   }
@@ -46,7 +46,10 @@ class AdaptiveFormWidget extends StatelessWidget {
         child: Container(
           width: formSize.width,
           height: formSize.height,
-          child: child,
+          child: DefaultTextStyle(
+            style: landscapeTheme.textTheme.bodyMedium!,
+            child: child,
+          ),
           decoration: BoxDecoration(
               color: landscapeTheme.dialogBackgroundColor,
               borderRadius: BorderRadius.circular(8),
@@ -67,7 +70,10 @@ class AdaptiveFormWidget extends StatelessWidget {
     var form = Theme(
         data: portraitTheme,
         child: SizedBox(
-          child: child,
+          child: DefaultTextStyle(
+            style: portraitTheme.textTheme.bodyMedium!,
+            child: child,
+          ),
           width: formSize.width,
           height: formSize.height,
         ));
