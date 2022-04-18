@@ -78,14 +78,15 @@ class AdaptiveFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context);
+    Widget content;
 
     if (media.orientation == Orientation.portrait) {
-      return SizedBox(
-          width: media.size.width,
-          height: media.size.height,
-          child: _forPortrait(context));
+      content = _forPortrait(context);
     } else {
-      return LayoutBuilder(builder: _forLandscape);
+      content = LayoutBuilder(builder: _forLandscape);
     }
+
+    return SizedBox(
+        width: media.size.width, height: media.size.height, child: content);
   }
 }
