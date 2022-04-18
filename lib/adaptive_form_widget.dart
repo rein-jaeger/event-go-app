@@ -3,15 +3,15 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AdaptiveFormWidget extends StatelessWidget {
-  final Widget child;
+  final Widget Function(BuildContext context, Size formSize) builder;
   final Size minSize;
   final ThemeData landscapeTheme;
   final ThemeData portraitTheme;
 
   const AdaptiveFormWidget(
       {Key? key,
-      required this.child,
-      this.minSize = const Size(360, 480),
+      required this.builder,
+      this.minSize = const Size(480, 640),
       required this.landscapeTheme,
       required this.portraitTheme})
       : super(key: key);
@@ -24,15 +24,6 @@ class AdaptiveFormWidget extends StatelessWidget {
   }
 
   Size _getLandscapeSize(BuildContext context, BoxConstraints constraints) {
-    var density = MediaQuery.of(context).devicePixelRatio;
-
-    if (density > 1.3) {
-      return Size(
-          max(minSize.width, constraints.minWidth * 0.6),
-          max(minSize.height,
-              constraints.minWidth * 0.6 / minSize.aspectRatio));
-    }
-
     return Size(
         max(minSize.width, constraints.minHeight * minSize.aspectRatio * 0.8),
         max(minSize.height, constraints.minHeight * 0.8));
@@ -48,7 +39,7 @@ class AdaptiveFormWidget extends StatelessWidget {
           height: formSize.height,
           child: DefaultTextStyle(
             style: landscapeTheme.textTheme.bodyMedium!,
-            child: child,
+            child: builder(context, formSize),
           ),
           decoration: BoxDecoration(
               color: landscapeTheme.dialogBackgroundColor,
@@ -72,7 +63,7 @@ class AdaptiveFormWidget extends StatelessWidget {
         child: SizedBox(
           child: DefaultTextStyle(
             style: portraitTheme.textTheme.bodyMedium!,
-            child: child,
+            child: builder(context, formSize),
           ),
           width: formSize.width,
           height: formSize.height,
