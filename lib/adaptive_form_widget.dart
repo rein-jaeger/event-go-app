@@ -16,6 +16,13 @@ class AdaptiveFormWidget extends StatelessWidget {
       required this.portraitTheme})
       : super(key: key);
 
+  Size _getPortraitSize(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var width = max(minSize.width, size.width * 0.8);
+
+    return Size(width, max(minSize.height, width / size.aspectRatio));
+  }
+
   Size _getLandscapeSize(BuildContext context, BoxConstraints constraints) {
     var density = MediaQuery.of(context).devicePixelRatio;
 
@@ -55,8 +62,17 @@ class AdaptiveFormWidget extends StatelessWidget {
     return Center(child: form);
   }
 
-  Widget _forPortrait(BuildContext context, BoxConstraints constraints) {
-    return Container(child: child);
+  Widget _forPortrait(BuildContext context) {
+    var formSize = _getPortraitSize(context);
+    var form = Theme(
+        data: portraitTheme,
+        child: SizedBox(
+          child: child,
+          width: formSize.width,
+          height: formSize.height,
+        ));
+
+    return Center(child: form);
   }
 
   @override
@@ -64,7 +80,10 @@ class AdaptiveFormWidget extends StatelessWidget {
     var media = MediaQuery.of(context);
 
     if (media.orientation == Orientation.portrait) {
-      return LayoutBuilder(builder: _forPortrait);
+      return SizedBox(
+          width: media.size.width,
+          height: media.size.height,
+          child: _forPortrait(context));
     } else {
       return LayoutBuilder(builder: _forLandscape);
     }
