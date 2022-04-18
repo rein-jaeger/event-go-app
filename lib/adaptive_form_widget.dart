@@ -87,6 +87,8 @@ class AdaptiveFormWidget extends StatelessWidget {
     }
 
     return SizedBox(
-        width: media.size.width, height: media.size.height, child: content);
+        width: max(minSize.width, media.size.width),
+        height: max(minSize.height, media.size.height),
+        child: content);
   }
 }
