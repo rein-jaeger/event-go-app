@@ -11,6 +11,9 @@ class CustomFormButton extends ElevatedButton {
                     borderRadius: BorderRadius.circular(8)))),
             child: Text(
               text,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: const TextStyle(
+                  fontFamily: 'Ubuntu',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
             ));
 }

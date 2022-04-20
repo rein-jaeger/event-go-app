@@ -12,9 +12,7 @@ class EventGoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'EventGO',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Ubuntu'),
       home: const LoginPage(),
     );
   }

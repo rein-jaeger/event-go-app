@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: TextButton(
                   child: const Text(
                     'Register',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16),
                   ),
                   onPressed: () {},
                 )),
@@ -139,7 +139,8 @@ class _LoginPageState extends State<LoginPage> {
       inputDecorationTheme:
           const InputDecorationTheme(fillColor: Color.fromARGB(28, 0, 0, 0)),
       textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 14, color: Colors.black)),
+          bodyMedium: TextStyle(
+              fontFamily: 'Ubuntu', fontSize: 14, color: Colors.black)),
     );
 
     var portraitTheme = ThemeData(
@@ -149,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
           fillColor: MaterialStateProperty.all(Colors.white),
           checkColor: MaterialStateProperty.all(Colors.blue)),
       textTheme: const TextTheme(
-        bodyMedium: TextStyle(color: Colors.white),
+        bodyMedium: TextStyle(fontFamily: 'Ubuntu', color: Colors.white),
       ),
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(primary: Colors.white)),

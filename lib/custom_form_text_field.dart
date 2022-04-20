@@ -10,6 +10,7 @@ class CustomFormTextField extends TextField {
       : super(
             key: key,
             controller: controller,
+            style: const TextStyle(fontFamily: 'Ubuntu'),
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
