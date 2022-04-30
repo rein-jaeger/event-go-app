@@ -138,7 +138,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     'Login',
                     style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 )),
           ],
         ));

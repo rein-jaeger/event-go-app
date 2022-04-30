@@ -1,6 +1,7 @@
 import 'package:event_go_app/adaptive_form_widget.dart';
 import 'package:event_go_app/custom_form_button.dart';
 import 'package:event_go_app/custom_form_text_field.dart';
+import 'package:event_go_app/registration_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -125,7 +126,12 @@ class _LoginPageState extends State<LoginPage> {
                     'Register',
                     style: TextStyle(fontFamily: 'Ubuntu', fontSize: 16),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegistrationPage()));
+                  },
                 )),
           ],
         ));
